@@ -105,12 +105,16 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
             case R.id.discoverable: {
-
+                // TODO: 2/13/19
                 return true;
+            }
+            case R.id.action_help:{
+                openHelpActivity();
             }
         }
         return false;
     }
+
 
     @Override
     public void onResume() {
@@ -135,6 +139,15 @@ public class MainActivity extends AppCompatActivity {
             mBluetoothService.stop();
         }
     }
+
+    /**
+     * Menu methods
+     */
+    private void openHelpActivity() {
+        Intent helpIntent = new Intent(MainActivity.this,HelpActivity.class);
+        startActivity(helpIntent);
+    }
+
 
 
     /******========Private methods===========******/

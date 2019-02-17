@@ -21,4 +21,13 @@
     <string name="discoverable">Make discoverable</string>
     <string name="cancel">cancel</string>
     <string name="ok">ok</string>
+    <string name="action_help">help</string>
+    <string name="helpTableTitle"><![CDATA[Commands -> characters sent to the car]]></string>
+    <string name="commandTitle">command</string>
+    <string name="commands">Commands</string>
+    <string name="characters">Characters</string>
+    <string name="moveUp">Move Up</string>
+    <string name="moveDown">Move Down</string>
+    <string name="moveLeft">Move Left</string>
+    <string name="moveRight">Move Right</string>
 </resources>

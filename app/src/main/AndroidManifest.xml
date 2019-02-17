@@ -3,7 +3,7 @@
     package="com.ensate.robotixcarrc">
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
@@ -24,7 +24,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ConnectDeviceActivity" android:configChanges="orientation|keyboardHidden" android:label="@string/select_device" android:theme="@android:style/Theme.Holo.Dialog"/>
+        <activity
+            android:name=".ConnectDeviceActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/select_device"
+            android:theme="@android:style/Theme.Holo.Dialog" />
+
+        <activity
+            android:name=".HelpActivity"
+            android:screenOrientation="landscape"></activity>
 
     </application>
 

@@ -14,6 +14,11 @@
         app:showAsAction="never"
         android:title="@string/discoverable"/>
     <item
+        android:id="@+id/action_help"
+        android:orderInCategory="100"
+        android:title="@string/action_help"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
