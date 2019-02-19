@@ -29,11 +29,10 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/select_device"
             android:theme="@android:style/Theme.Holo.Dialog" />
-
         <activity
             android:name=".HelpActivity"
-            android:screenOrientation="landscape"></activity>
-
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

@@ -2,6 +2,8 @@ package com.ensate.robotixcarrc;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class HelpActivity extends AppCompatActivity {
@@ -10,6 +12,12 @@ public class HelpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.action_help);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
+
 
         updateHelpTable();
     }
@@ -29,5 +37,22 @@ public class HelpActivity extends AppCompatActivity {
         moveRightTextView.setText(String.valueOf(Constants.MOVE_RIGHT_CMD));
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home: {
+                onBackPressed();
+                break;
+            }
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

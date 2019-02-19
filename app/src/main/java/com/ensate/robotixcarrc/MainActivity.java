@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
      */
     private BluetoothService mBluetoothService;
 
+    private boolean doubleBackToExitPressedOnce = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 // TODO: 2/13/19
                 return true;
             }
-            case R.id.action_help:{
+            case R.id.action_help: {
                 openHelpActivity();
             }
         }
@@ -144,10 +146,9 @@ public class MainActivity extends AppCompatActivity {
      * Menu methods
      */
     private void openHelpActivity() {
-        Intent helpIntent = new Intent(MainActivity.this,HelpActivity.class);
+        Intent helpIntent = new Intent(MainActivity.this, HelpActivity.class);
         startActivity(helpIntent);
     }
-
 
 
     /******========Private methods===========******/
@@ -330,6 +331,24 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         actionBar.setSubtitle(subTitle);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Press BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
     }
 
 
