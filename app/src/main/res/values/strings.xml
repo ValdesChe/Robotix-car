@@ -21,7 +21,7 @@
     <string name="discoverable">Make discoverable</string>
     <string name="cancel">cancel</string>
     <string name="ok">ok</string>
-    <string name="action_help">help</string>
+    <string name="action_help">Help</string>
     <string name="helpTableTitle"><![CDATA[Commands -> characters sent to the car]]></string>
     <string name="commandTitle">command</string>
     <string name="commands">Commands</string>
@@ -33,4 +33,5 @@
     <string name="left_button_action">Left button action</string>
     <string name="right_button_action">Right button action</string>
     <string name="placeholder">TextView</string>
+    <string name="action_full_screen">Full screen</string>
 </resources>

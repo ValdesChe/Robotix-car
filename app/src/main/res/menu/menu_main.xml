@@ -19,6 +19,11 @@
         android:title="@string/action_help"
         app:showAsAction="never" />
     <item
+        android:id="@+id/action_full_screen"
+        android:orderInCategory="100"
+        android:title="@string/action_full_screen"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
