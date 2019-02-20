@@ -8,15 +8,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,6 +57,14 @@ public class MainActivity extends AppCompatActivity {
      */
     private BluetoothService mBluetoothService;
 
+    /**
+     * control buttons
+     */
+    private ImageButton mMoveRightButton;
+    private ImageButton mMoveLeftButton;
+    private ImageButton mMoveUpButton;
+    private ImageButton mMoveDownButton;
+
     private boolean doubleBackToExitPressedOnce = false;
 
     @Override
@@ -65,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         // Get local Bluetooth adapter
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
@@ -74,17 +81,11 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Bluetooth is not available", Toast.LENGTH_LONG).show();
             MainActivity.this.finish();
         }
+        //initMembers and setup control pad
+        setupControlPadView();
 
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -153,6 +154,33 @@ public class MainActivity extends AppCompatActivity {
 
 
     /******========Private methods===========******/
+
+
+    /**
+     * setup Control pad View
+     */
+
+    private void setupControlPadView() {
+
+        mMoveUpButton = findViewById(R.id.upButton);
+        mMoveUpButton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                ImageButton imageButton = (ImageButton) v;
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    imageButton.setBackgroundColor(getResources().getColor(R.color.btn_bg_pressed));
+                    // sendBluetoothData(button);
+                    return true;
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    imageButton.setBackgroundColor(getResources().getColor(R.color.btn_bg_default));
+                    return true;
+                }
+                return false;
+            }
+        });
+
+
+    }
 
     private void openConnectActivity() {
         //enable bluetooth first
@@ -351,6 +379,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }, 2000);
     }
-
-
 }

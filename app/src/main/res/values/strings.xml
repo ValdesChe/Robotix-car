@@ -30,4 +30,7 @@
     <string name="moveDown">Move Down</string>
     <string name="moveLeft">Move Left</string>
     <string name="moveRight">Move Right</string>
+    <string name="left_button_action">Left button action</string>
+    <string name="right_button_action">Right button action</string>
+    <string name="placeholder">TextView</string>
 </resources>

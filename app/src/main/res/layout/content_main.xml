@@ -10,7 +10,7 @@
     tools:showIn="@layout/activity_main">
 
     <ImageButton
-        android:id="@+id/topBtn"
+        android:id="@+id/upButton"
         style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -20,17 +20,18 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="18dp"
         android:layout_marginBottom="8dp"
-        android:contentDescription="Left button action"
-        app:layout_constraintBottom_toTopOf="@+id/bottomBtn"
+        android:background="@color/btn_bg_default"
+        android:contentDescription="@string/left_button_action"
+        app:layout_constraintBottom_toTopOf="@+id/downButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.842"
-        app:srcCompat="@drawable/ic_keyboard_arrow_up_black_24dp" />
+        app:srcCompat="@drawable/ic_keyboard_arrow_up_24dp" />
 
     <ImageButton
-        android:id="@+id/leftBtn"
+        android:id="@+id/leftButton"
         style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -40,17 +41,18 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:contentDescription="Left button action"
+        android:background="@color/btn_bg_default"
+        android:contentDescription="@string/left_button_action"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/rightBtn"
+        app:layout_constraintEnd_toStartOf="@+id/rightButton"
         app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.497"
-        app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
+        app:srcCompat="@drawable/ic_keyboard_arrow_left_24dp" />
 
     <ImageButton
-        android:id="@+id/rightBtn"
+        android:id="@+id/rightButton"
         style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -58,15 +60,16 @@
         android:layout_marginEnd="52dp"
         android:layout_marginRight="52dp"
         android:layout_marginBottom="8dp"
-        android:contentDescription="Left button action"
+        android:background="@color/btn_bg_default"
+        android:contentDescription="@string/left_button_action"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.497"
-        app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
+        app:srcCompat="@drawable/ic_keyboard_arrow_right_24dp" />
 
     <ImageButton
-        android:id="@+id/bottomBtn"
+        android:id="@+id/downButton"
         style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -76,14 +79,16 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:contentDescription="Right button action"
+        android:background="@color/btn_bg_default"
+        android:contentDescription="@string/right_button_action"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.744"
-        app:srcCompat="@drawable/ic_keyboard_arrow_down_black_24dp" />
+        app:srcCompat="@drawable/ic_keyboard_arrow_down_24dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -95,7 +100,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="80dp"
-        android:text="TextView"
+        android:text="@string/placeholder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.393"
@@ -114,9 +119,9 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/leftBtn"
+        app:layout_constraintEnd_toStartOf="@+id/leftButton"
         app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintStart_toEndOf="@+id/bottomBtn"
+        app:layout_constraintStart_toEndOf="@+id/downButton"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.0">
 
