@@ -4,11 +4,13 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -77,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
             ImageButton imageButton = (ImageButton) v;
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 imageButton.setBackgroundColor(getResources().getColor(R.color.btn_bg_pressed));
+                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vibrator.vibrate(50);
                 // sendBluetoothData(button);
                 return true;
             } else if (event.getAction() == MotionEvent.ACTION_UP) {
@@ -123,18 +127,25 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.connect_scan: {
                 openConnectActivity();
+                return true;
             }
             case R.id.connect_scan_menu_item: {
                 openConnectActivity();
+                return true;
             }
             case R.id.discoverable: {
                 // TODO: 2/13/19
+                return true;
+
             }
             case R.id.action_full_screen: {
                 hideSystemUI();
+                return true;
             }
             case R.id.action_help: {
                 openHelpActivity();
+                return true;
+
             }
         }
         return super.onOptionsItemSelected(item);
@@ -357,27 +368,41 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Sends a message.
+     * Sends a data.
      *
-     * @param message A string of text to send.
+     * @param data A string of text to send.
      */
-    private void sendMessage(String message) {
+    private void sendBluetoothData(final String data) {
         // Check that we're actually connected before trying anything
         if (mBluetoothService.getState() != BluetoothService.STATE_CONNECTED) {
             Toast.makeText(MainActivity.this, R.string.not_connected, Toast.LENGTH_SHORT).show();
             return;
         }
+        // TODO: 2/20/19  to set switch user pref
+        final int delay = 50;
 
-        // Check that there's actually something to send
-        if (message.length() > 0) {
-            // Get the message bytes and tell the BluetoothChatService to write
-            byte[] send = message.getBytes();
-            mBluetoothService.write(send);
+        final Handler handler = new Handler();
 
-            // Reset out string buffer to zero and clear the edit text field
-            mOutStringBuffer.setLength(0);
-//            mOutEditText.setText(mOutStringBuffer);
-        }
+        final Runnable r = new Runnable() {
+            public void run() {
+                send(data, true);
+            }
+        };
+        handler.postDelayed(r, delay);
+    }
+
+    /**
+     * Sends a data.
+     *
+     * @param data A string of text to send.     *
+     * @param CRLF \r\n"  separator
+     */
+
+    public void send(String data, boolean CRLF) {
+        if (CRLF)
+            data += "\r\n";
+
+        mBluetoothService.write(data.getBytes());
     }
 
 

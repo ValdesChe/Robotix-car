@@ -32,6 +32,6 @@
     <string name="moveRight">Move Right</string>
     <string name="left_button_action">Left button action</string>
     <string name="right_button_action">Right button action</string>
-    <string name="placeholder">TextView</string>
+    <string name="placeholder">debug Log TextView</string>
     <string name="action_full_screen">Full screen</string>
 </resources>
