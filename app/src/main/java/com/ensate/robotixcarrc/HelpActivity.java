@@ -1,12 +1,16 @@
 package com.ensate.robotixcarrc;
 
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 public class HelpActivity extends AppCompatActivity {
+    SharedPreferences mPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,25 +27,34 @@ public class HelpActivity extends AppCompatActivity {
     }
 
     private void updateHelpTable() {
+        mPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        Resources res = getResources();
 
-        TextView moveUpTextView = findViewById(R.id.cMoveUpTextView);
-        moveUpTextView.setText(String.valueOf(Constants.MOVE_UP_CMD));
+        String commandTitleString = res.getString(R.string.commands_titles_string,
+                res.getString(R.string.pref_title_pos_up),
+                res.getString(R.string.pref_title_pos_down),
+                res.getString(R.string.pref_title_pos_left),
+                res.getString(R.string.pref_title_pos_right),
+                res.getString(R.string.pref_title_pos_up_left),
+                res.getString(R.string.pref_title_pos_up_right),
+                res.getString(R.string.pref_title_pos_down_left),
+                res.getString(R.string.pref_title_pos_down_right));
 
-        TextView moveDownTextView = findViewById(R.id.cMoveDownTextView);
-        moveDownTextView.setText(String.valueOf(Constants.MOVE_DOWN_CMD));
+        String commandCharDataString = res.getString(R.string.command_char_data_string,
+                mPrefs.getString(res.getString(R.string.key_pref_pos_up), res.getString(R.string.pref_default_pos_up)),
+                mPrefs.getString(res.getString(R.string.key_pref_pos_down), res.getString(R.string.pref_default_pos_down)),
+                mPrefs.getString(res.getString(R.string.key_pref_pos_left), res.getString(R.string.pref_default_pos_left)),
+                mPrefs.getString(res.getString(R.string.key_pref_pos_right), res.getString(R.string.pref_default_pos_right)),
+                mPrefs.getString(res.getString(R.string.key_pref_pos_up_left), res.getString(R.string.pref_default_pos_up_left)),
+                mPrefs.getString(res.getString(R.string.key_pref_pos_up_right), res.getString(R.string.pref_default_pos_up_right)),
+                mPrefs.getString(res.getString(R.string.key_pref_pos_down_left), res.getString(R.string.pref_default_pos_down_left)),
+                mPrefs.getString(res.getString(R.string.key_pref_pos_down_right), res.getString(R.string.pref_default_pos_down_right)));
 
-        TextView moveUpLeftView = findViewById(R.id.cMoveUpLeftView);
-        moveUpLeftView.setText(String.valueOf(Constants.MOVE_LEFT_CMD));
+        TextView commandTitleTextView = findViewById(R.id.commandTitleTextView);
+        TextView commandCharDataTextView = findViewById(R.id.commandCharDataTextView);
+        commandTitleTextView.setText(commandTitleString);
+        commandCharDataTextView.setText(commandCharDataString);
 
-        TextView moveRightTextView = findViewById(R.id.cMoveRightTextView);
-        moveRightTextView.setText(String.valueOf(Constants.MOVE_RIGHT_CMD));
-
-
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 
     @Override

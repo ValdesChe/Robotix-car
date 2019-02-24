@@ -3,11 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp">
+    android:paddingTop="@dimen/appbar_padding_top">
 
     <TextView
-        android:id="@+id/title_paired_devices"
+        android:id="@+id/titlePairedDevicesTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#666"
@@ -17,14 +16,14 @@
         android:visibility="gone" />
 
     <ListView
-        android:id="@+id/paired_devices"
+        android:id="@+id/pairedDevicesListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:stackFromBottom="true" />
 
     <TextView
-        android:id="@+id/title_new_devices"
+        android:id="@+id/titleNewDevicesTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#666"
@@ -34,14 +33,14 @@
         android:visibility="gone" />
 
     <ListView
-        android:id="@+id/new_devices"
+        android:id="@+id/newDevicesListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="2"
         android:stackFromBottom="true" />
 
     <Button
-        android:id="@+id/button_scan"
+        android:id="@+id/scanButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/button_scan" />

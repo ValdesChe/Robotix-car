@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#0097A7</color>
-    <color name="colorPrimaryDark">#1E88E5</color>
-    <color name="colorAccent">#020B1A</color>
-    <color name="btn_bg_default">#022C42</color>
-    <color name="btn_bg_pressed">#0097A7</color>
-
+    <color name="colorPrimary">#007277</color>
+    <color name="primaryLightColor">#5ad3d7</color>
+    <color name="colorPrimaryDark">#007277</color>
+    <color name="primaryTextColor">#000000</color>
+    <color name="colorAccent">#007277</color>
+    <color name="btn_bg_default">#030F10</color>
+    <color name="btn_bg_pressed">#1976D2</color>
+    <color name="backgroundPrimary">#0CA1A6</color>
+    <color name="backgroundSecondary">#0CA1A6</color>
+    <color name="blue">#18618A</color>
 </resources>

@@ -1,28 +1,38 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Robotix Car Rc</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!--  Options Menu  -->
     <string name="action_settings">Settings</string>
+    <string name="action_about">About Us</string>
+    <string name="action_full_screen">Full Screen</string>
+    <string name="connect_device">Connect a Device</string>
+    <string name="discoverable">Make Discoverable</string>
+    <string name="action_help">Help</string>
+
+    <!--  Context Menu  -->
     <!--   Bluetooth  -->
     <string name="send">Send</string>
     <string name="not_connected">You are not connected to a device</string>
     <string name="bt_not_enabled_leaving">Bluetooth was not enabled. Leaving App.</string>
-    <string name="title_connecting">connecting...</string>
+    <string name="title_connecting">connecting &#8230;</string>
     <string name="title_connected_to">connected to <xliff:g id="device_name">%1$s</xliff:g> </string>
     <string name="title_not_connected">not connected</string>
+
+
     <!--   DeviceListActivity  -->
-    <string name="scanning">scanning for devices...</string>
-    <string name="select_device">select a device to connect</string>
+    <string name="scanning">scanning for devices &#8230;</string>
+    <string name="select_device">\t\tSelect a device to connect</string>
     <string name="none_paired">No devices have been paired</string>
     <string name="none_found">No devices found</string>
     <string name="title_paired_devices">Paired Devices</string>
     <string name="title_other_devices">Other Available Devices</string>
     <string name="button_scan">Scan for devices</string>
+
+
     <!--  Options Menu  -->
-    <string name="connect_device">Connect a device</string>
-    <string name="discoverable">Make discoverable</string>
-    <string name="cancel">cancel</string>
-    <string name="ok">ok</string>
-    <string name="action_help">Help</string>
-    <string name="helpTableTitle"><![CDATA[Commands -> characters sent to the car]]></string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
     <string name="commandTitle">command</string>
     <string name="commands">Commands</string>
     <string name="characters">Characters</string>
@@ -33,5 +43,62 @@
     <string name="left_button_action">Left button action</string>
     <string name="right_button_action">Right button action</string>
     <string name="placeholder">debug Log TextView</string>
-    <string name="action_full_screen">Full screen</string>
+
+
+    <!-- Strings related to Settings -->
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+    <string name="pref_title_delay">Delay before send data</string>
+    <string-array name="pref_title_delay">
+        <item>None</item>
+        <item>10 ms</item>
+        <item>20 ms</item>
+        <item>50 ms</item>
+        <item>100 ms</item>
+        <item>200 ms</item>
+        <item>500 ms</item>
+        <item>1000 ms</item>
+    </string-array>
+    <string-array name="pref_delay_list_values">
+        <item>0</item>
+        <item>10</item>
+        <item>20</item>
+        <item>50</item>
+        <item>100</item>
+        <item>200</item>
+        <item>500</item>
+        <item>1000</item>
+    </string-array>
+
+
+    <!-- preferences strings-->
+    <string name="pref_header_controls">Control buttons</string>
+    <string name="pref_default_pos_up">U</string>
+    <string name="pref_title_pos_up">Up Button</string>
+    <string name="pref_default_pos_down">D</string>
+    <string name="pref_title_pos_down">Down Button</string>
+    <string name="pref_default_pos_left">L</string>
+    <string name="pref_title_pos_left">Left Button</string>
+    <string name="pref_default_pos_right">R</string>
+    <string name="pref_title_pos_right">Right Button</string>
+    <string name="pref_default_pos_up_left">I</string>
+    <string name="pref_title_pos_up_left">Up Left Button</string>
+    <string name="pref_default_pos_up_right">J</string>
+    <string name="pref_title_pos_up_right">Up Right Button</string>
+    <string name="pref_default_pos_down_left">X</string>
+    <string name="pref_title_pos_down_left">Down Left Button</string>
+    <string name="pref_default_pos_down_right">Y</string>
+    <string name="pref_title_pos_down_right">Down Right Button</string>
+
+    <string name="pref_description_debug">Show debug value on each buttons</string>
+    <string name="pref_title_debug">Show debug</string>
+    <string name="pref_description_vibrate">Vibrate when push button</string>
+    <string name="pref_title_vibrate">Vibrate when push button</string>
+
+
+    <!-- command help-->
+    <string name="helpTableTitle"><b>Commands</b> &#8658; <b>Characters</b> sent to the Device(car)</string>
+    <string name="commands_titles_string">(\tCommands\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n</string>
+    <string name="commands_col_sep_string">\n&#8658;\n&#8658;\n&#8658;\n&#8658;\n&#8658;\n&#8658;\n&#8658;\n&#8658;\n</string>
+    <string name="command_char_data_string">\tCharacters\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\t\t)\n</string>
 </resources>

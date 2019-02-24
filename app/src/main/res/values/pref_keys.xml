@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!-- buttons pref keys-->
+    <string name="key_pref_pos_up">pref_pos_up</string>
+    <string name="key_pref_pos_down">pref_pos_down</string>
+    <string name="key_pref_pos_left">pref_pos_left</string>
+    <string name="key_pref_pos_right">pref_pos_right</string>
+
+    <string name="key_pref_pos_up_left">pref_pos_up_left</string>
+    <string name="key_pref_pos_up_right">pref_pos_up_right</string>
+    <string name="key_pref_pos_down_left">pref_pos_down_left</string>
+    <string name="key_pref_pos_down_right">pref_pos_down_right</string>
+
+
+    <!--- general pref keys-->
+    <string name="key_pref_debug_switch">pref_debug_switch</string>
+    <string name="key_pref_vibrate_switch">pref_vibrate_switch</string>
+    <string name="key_pref_delay_list">pref_delay_list</string>
+
+</resources>

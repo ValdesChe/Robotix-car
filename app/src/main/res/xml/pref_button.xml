@@ -1,0 +1,75 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_default_pos_up"
+        android:key="@string/key_pref_pos_up"
+        android:maxLength="1"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_title_pos_up" />
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_default_pos_down"
+        android:key="@string/key_pref_pos_down"
+        android:maxLength="1"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_title_pos_down" />
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_default_pos_left"
+        android:key="@string/key_pref_pos_left"
+        android:maxLength="1"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_title_pos_left" />
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_default_pos_right"
+        android:key="@string/key_pref_pos_right"
+        android:maxLength="1"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_title_pos_right" />
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_default_pos_up_left"
+        android:key="@string/key_pref_pos_up_left"
+        android:maxLength="1"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_title_pos_up_left" />
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_default_pos_up_right"
+        android:key="@string/key_pref_pos_up_right"
+        android:maxLength="1"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_title_pos_up_right" />
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_default_pos_down_left"
+        android:key="@string/key_pref_pos_down_left"
+        android:maxLength="1"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_title_pos_down_left" />
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_default_pos_down_right"
+        android:key="@string/key_pref_pos_down_right"
+        android:maxLength="1"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_title_pos_down_right" />
+
+</PreferenceScreen>

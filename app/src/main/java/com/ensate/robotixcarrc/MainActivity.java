@@ -6,11 +6,13 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Vibrator;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -22,12 +24,15 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getName();
 
     // Intent request codes
     private static final int REQUEST_CONNECT_DEVICE = 1;
     private static final int REQUEST_ENABLE_BT = 2;
+    private static final int UPDATE_SETTING = 3;
 
     /**
      * Name of the connected device
@@ -70,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
 
     private View mDecorView;
 
+    private SharedPreferences mPrefs;
+
 
     private boolean doubleBackToExitPressedOnce = false;
 
@@ -79,8 +86,10 @@ public class MainActivity extends AppCompatActivity {
             ImageButton imageButton = (ImageButton) v;
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 imageButton.setBackgroundColor(getResources().getColor(R.color.btn_bg_pressed));
-                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                vibrator.vibrate(50);
+                if (mPrefs.getBoolean(getResources().getString(R.string.key_pref_vibrate_switch), true)) {
+                    Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    vibrator.vibrate(50);
+                }
                 // sendBluetoothData(button);
                 return true;
             } else if (event.getAction() == MotionEvent.ACTION_UP) {
@@ -95,11 +104,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         // set view
         mDecorView = getWindow().getDecorView();
         // hide system ui
         hideSystemUI();
-
         // Get local Bluetooth adapter
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
@@ -110,6 +119,8 @@ public class MainActivity extends AppCompatActivity {
         }
         //initMembers and setup control pad
         setupControlPadView();
+        //load user prefs
+        loadPreference();
     }
 
 
@@ -125,32 +136,38 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.connect_scan: {
+            case R.id.connect_scan_menu_item:
+            case R.id.action_connect_scan: {
                 openConnectActivity();
                 return true;
             }
-            case R.id.connect_scan_menu_item: {
-                openConnectActivity();
+            case R.id.full_screen_menu_item:
+            case R.id.action_full_screen: {
+                hideSystemUI();
                 return true;
             }
             case R.id.discoverable: {
                 // TODO: 2/13/19
                 return true;
-
             }
-            case R.id.action_full_screen: {
-                hideSystemUI();
+            case R.id.action_settings: {
+                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivityForResult(i, UPDATE_SETTING);
                 return true;
             }
             case R.id.action_help: {
                 openHelpActivity();
                 return true;
-
             }
         }
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        loadPreference();
+    }
 
     @Override
     public void onResume() {
@@ -165,6 +182,7 @@ public class MainActivity extends AppCompatActivity {
                 // Start the Bluetooth chat services
                 mBluetoothService.start();
             }
+            loadPreference();
         }
     }
 
@@ -450,4 +468,18 @@ public class MainActivity extends AppCompatActivity {
             }
         }, 2000);
     }
+
+
+    public void loadPreference() {
+        mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        Map<String, ?> keys = mPrefs.getAll();
+        Log.d("LOG", "Keys = " + keys.size() + "");
+        if (keys.size() >= 11) {
+            for (Map.Entry<String, ?> entry : keys.entrySet()) {
+                Log.d("LOG", entry.getKey() + ": " +
+                        entry.getValue().toString());
+            }
+        }
+    }
+
 }
