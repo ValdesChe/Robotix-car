@@ -7,12 +7,14 @@ import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CONNECT_DEVICE = 1;
     private static final int REQUEST_ENABLE_BT = 2;
     private static final int UPDATE_SETTING = 3;
+
+
 
     /**
      * Name of the connected device
@@ -85,6 +89,22 @@ public class MainActivity extends AppCompatActivity {
         public boolean onTouch(View v, MotionEvent event) {
             ImageButton imageButton = (ImageButton) v;
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                ConstraintLayout constraintLayout = findViewById(R.id.statusBoard);
+                switch (v.getId()) {
+                    case R.id.upButton:
+                        constraintLayout.setBackgroundColor(Color.rgb(125,132,35));
+                        break;
+                    case R.id.downButton:
+                        constraintLayout.setBackgroundColor(Color.rgb(25,112,25));
+                        break;
+                    case R.id.leftButton:
+
+                        constraintLayout.setBackgroundColor(Color.rgb(215,12,215));
+                        break;
+                        case R.id.rightButton:
+                            constraintLayout.setBackgroundColor(Color.rgb(15,32,25));
+                        break;
+                }
                 imageButton.setBackgroundColor(getResources().getColor(R.color.btn_bg_pressed));
                 if (mPrefs.getBoolean(getResources().getString(R.string.key_pref_vibrate_switch), true)) {
                     Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
