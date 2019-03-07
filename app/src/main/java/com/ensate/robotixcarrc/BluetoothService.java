@@ -352,7 +352,8 @@ public class BluetoothService {
 
             // given BluetoothDevice
             try {
-                tmp = device.createRfcommSocketToServiceRecord(MY_APP_UUID);
+                 tmp = device.createRfcommSocketToServiceRecord(MY_APP_UUID);
+                // tmp = device.createInsecureRfcommSocketToServiceRecord(MY_APP_UUID);
 
             } catch (IOException e) {
                 Log.e(TAG, "Socket create() failed", e);
@@ -384,8 +385,10 @@ public class BluetoothService {
                 }
 
                 connectionFailed(e.toString());
+                Log.e(TAG, "ERR socket during connection failure");
                 return;
             }
+
 
             // Reset the ConnectThread because we're done
             synchronized (BluetoothService.this) {
@@ -393,7 +396,7 @@ public class BluetoothService {
             }
 
             // Start the connected thread
-//            connected(mmSocket, mmDevice);
+            connected(mmSocket, mmDevice);
         }
 
         public void cancel() {

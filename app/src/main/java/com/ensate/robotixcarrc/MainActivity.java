@@ -7,6 +7,7 @@ import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
+import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -84,35 +86,139 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean doubleBackToExitPressedOnce = false;
 
+    private boolean isVertical = false;
+    private char isVerticalVal = ' ';
+    private boolean isHorizontal = false;
+    private char isHorizontalVal = ' ';
+
+
+
     private View.OnTouchListener mControlsButtonOnTouchListener = new View.OnTouchListener() {
+        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             ImageButton imageButton = (ImageButton) v;
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            Resources res = getResources();
+            if ( mBluetoothService != null &&  event.getAction() == MotionEvent.ACTION_DOWN) {
                 ConstraintLayout constraintLayout = findViewById(R.id.statusBoard);
-                switch (v.getId()) {
+                // System.out.println(isHorizontalVal + " | " + isVerticalVal);
+               switch (v.getId()) {
                     case R.id.upButton:
-                        constraintLayout.setBackgroundColor(Color.rgb(125,132,35));
+                        isVertical = true;
+                        if(isHorizontal && isHorizontalVal == 'L'){
+                            System.out.println("TOP - LEFT");
+                            sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_up_left),
+                                                     res.getString(R.string.pref_default_pos_up_left)));
+                            constraintLayout.setBackgroundColor(Color.rgb(55,32,5));
+                        }
+                        else if(isHorizontal && isHorizontalVal == 'R'){
+                            System.out.println("TOP - RIGHT");
+                            constraintLayout.setBackgroundColor(Color.rgb(155,132,45));
+                            sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_up_right),
+                                    res.getString(R.string.pref_default_pos_up_right)));
+                            constraintLayout.setBackgroundColor(Color.rgb(55,32,5));
+                        }
+                        else{
+                            System.out.println("TOP");
+                            isVerticalVal = 'T';
+                            sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_up),
+                                    res.getString(R.string.pref_default_pos_up)));
+                            constraintLayout.setBackgroundColor(Color.rgb(5,2,0));
+                        }
                         break;
                     case R.id.downButton:
-                        constraintLayout.setBackgroundColor(Color.rgb(25,112,25));
+                        isVertical = true;
+                        if(isHorizontal && isHorizontalVal == 'L'){
+                            System.out.println("DOWN - LEFT");
+                            sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_down_left),
+                                    res.getString(R.string.pref_default_pos_down_left)));
+                            constraintLayout.setBackgroundColor(Color.rgb(205,3,53));
+                        }
+                        else if(isHorizontal && isHorizontalVal == 'R'){
+                            System.out.println("DOWN - RIGHT");
+                            sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_down_right),
+                                    res.getString(R.string.pref_default_pos_down_right)));
+                            constraintLayout.setBackgroundColor(Color.rgb(155,132,45));
+                        }
+                        else{
+                            System.out.println("DOWN");
+                            isVerticalVal = 'D';
+                            sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_down),
+                                    res.getString(R.string.pref_default_pos_down)));
+                            constraintLayout.setBackgroundColor(Color.rgb(105,52,205));
+                        }
                         break;
                     case R.id.leftButton:
-
-                        constraintLayout.setBackgroundColor(Color.rgb(215,12,215));
+                        isHorizontal = true;
+                        if(isVertical && isVerticalVal == 'T'){
+                            System.out.println("TOP - LEFT");
+                            sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_up_left),
+                                    res.getString(R.string.pref_default_pos_up_left)));
+                            constraintLayout.setBackgroundColor(Color.rgb(145,3,3));
+                        }
+                        else if(isVertical && isVerticalVal == 'D'){
+                            System.out.println("DOWN - LEFT");
+                            sendBluetoothData(mPrefs.getString(res.getString(R.string.pref_default_pos_down_left),
+                                    res.getString(R.string.pref_default_pos_down_left)));
+                            constraintLayout.setBackgroundColor(Color.rgb(15,132,245));
+                        }
+                        else{
+                            System.out.println("LEFT");
+                            sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_up),
+                                    res.getString(R.string.pref_default_pos_up)));
+                            isHorizontalVal = 'L';
+                            constraintLayout.setBackgroundColor(Color.rgb(105,92,25));
+                        }
                         break;
                         case R.id.rightButton:
-                            constraintLayout.setBackgroundColor(Color.rgb(15,32,25));
+                            isHorizontal = true;
+                            if(isVertical && isVerticalVal == 'T'){
+                                System.out.println("TOP - RIGHT");
+                                sendBluetoothData(mPrefs.getString(res.getString(R.string.pref_default_pos_up_right),
+                                        res.getString(R.string.pref_default_pos_up_right)));
+                                constraintLayout.setBackgroundColor(Color.rgb(15,30,123));
+                            }
+                            else if(isVertical && isVerticalVal == 'D'){
+                                System.out.println("DOWN - RIGHT");
+                                sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_down_right),
+                                        res.getString(R.string.pref_default_pos_down_right)));
+                                constraintLayout.setBackgroundColor(Color.rgb(105,32,5));
+                            }
+                            else{
+                                System.out.println("RIGHT");
+                                isHorizontalVal = 'R';
+                                sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_right),
+                                        res.getString(R.string.pref_default_pos_right)));
+                                constraintLayout.setBackgroundColor(Color.rgb(205,9,125));
+                            }
                         break;
-                }
-                imageButton.setBackgroundColor(getResources().getColor(R.color.btn_bg_pressed));
-                if (mPrefs.getBoolean(getResources().getString(R.string.key_pref_vibrate_switch), true)) {
+               }
+               imageButton.setBackgroundColor(getResources().getColor(R.color.btn_bg_pressed));
+               if (mPrefs.getBoolean(getResources().getString(R.string.key_pref_vibrate_switch), true)) {
                     Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                     vibrator.vibrate(50);
-                }
+               }
                 // sendBluetoothData(button);
                 return true;
-            } else if (event.getAction() == MotionEvent.ACTION_UP) {
+            } else if ( mBluetoothService != null && event.getAction() == MotionEvent.ACTION_UP) {
+                switch (v.getId()) {
+                    case R.id.upButton:
+                        isVertical = false;
+                        isVerticalVal = ' ';
+                        break;
+                    case R.id.downButton:
+                        isVertical = false;
+                        isVerticalVal = ' ';
+                        break;
+                    case R.id.leftButton:
+                        isHorizontal = false;
+                        isHorizontalVal = ' ';
+                        break;
+                    case R.id.rightButton:
+                        isHorizontal = false;
+                        isHorizontalVal = ' ';
+                        break;
+                }
                 imageButton.setBackgroundColor(getResources().getColor(R.color.btn_bg_default));
                 return true;
             }
@@ -332,10 +438,12 @@ public class MainActivity extends AppCompatActivity {
         // Attempt to connect to the device
         mBluetoothService.connect(device);
 
+
+
         //update the icon when connected
         mConnectScanMenuItem.setIcon(R.drawable.ic_bluetooth_connected_green_24dp);
         TextView textView = findViewById(R.id.textView);
-        textView.setText(device.getName() + device.getAddress());
+        textView.setText("DEVICE : "+ device.getAddress()+"/"+address+"\n MAC : "+ device.getAddress()+" \n STATE "+ mBluetoothService.getState());
 
     }
 
@@ -350,7 +458,7 @@ public class MainActivity extends AppCompatActivity {
                     switch (msg.arg1) {
                         case BluetoothService.STATE_CONNECTED:
                             setStatus(getString(R.string.title_connected_to, mConnectedDeviceName));
-                            mConversationArrayAdapter.clear();
+                            // mConversationArrayAdapter.clear();
                             break;
                         case BluetoothService.STATE_CONNECTING:
                             setStatus(R.string.title_connecting);
@@ -365,13 +473,13 @@ public class MainActivity extends AppCompatActivity {
                     byte[] writeBuf = (byte[]) msg.obj;
                     // construct a string from the buffer
                     String writeMessage = new String(writeBuf);
-                    mConversationArrayAdapter.add("Me:  " + writeMessage);
+                    //mConversationArrayAdapter.add("Me:  " + writeMessage);
                     break;
                 case Constants.MESSAGE_READ:
                     byte[] readBuf = (byte[]) msg.obj;
                     // construct a string from the valid bytes in the buffer
                     String readMessage = new String(readBuf, 0, msg.arg1);
-                    mConversationArrayAdapter.add(mConnectedDeviceName + ":  " + readMessage);
+                    // mConversationArrayAdapter.add(mConnectedDeviceName + ":  " + readMessage);
                     break;
                 case Constants.MESSAGE_DEVICE_NAME:
                     // save the connected device's name
