@@ -5,7 +5,7 @@
     <color name="colorPrimaryDark">#007277</color>
     <color name="primaryTextColor">#000000</color>
     <color name="colorAccent">#007277</color>
-    <color name="btn_bg_default">#030F10</color>
+    <color name="btn_bg_default">#00030F10</color>
     <color name="btn_bg_pressed">#1976D2</color>
     <color name="backgroundPrimary">#0CA1A6</color>
     <color name="backgroundSecondary">#0CA1A6</color>

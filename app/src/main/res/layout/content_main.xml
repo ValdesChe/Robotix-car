@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundSecondary"
+    android:background="@drawable/bg_work"
+
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
@@ -24,11 +25,11 @@
         android:contentDescription="@string/left_button_action"
         app:layout_constraintBottom_toTopOf="@+id/downButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintHorizontal_bias="0.079"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.842"
-        app:srcCompat="@drawable/ic_keyboard_arrow_up_24dp" />
+        app:layout_constraintVertical_bias="0.704"
+        app:srcCompat="@drawable/btn_top" />
 
     <ImageButton
         android:id="@+id/leftButton"
@@ -45,11 +46,11 @@
         android:contentDescription="@string/left_button_action"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/rightButton"
-        app:layout_constraintHorizontal_bias="0.983"
+        app:layout_constraintHorizontal_bias="0.755"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.786"
-        app:srcCompat="@drawable/ic_keyboard_arrow_left_24dp" />
+        app:layout_constraintVertical_bias="0.575"
+        app:srcCompat="@drawable/btn_left" />
 
     <ImageButton
         android:id="@+id/rightButton"
@@ -57,43 +58,39 @@
         android:layout_width="@dimen/button_width"
         android:layout_height="@dimen/button_height"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginRight="36dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
         android:layout_marginBottom="8dp"
         android:background="@color/btn_bg_default"
         android:contentDescription="@string/left_button_action"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.786"
-        app:srcCompat="@drawable/ic_keyboard_arrow_right_24dp" />
+        app:layout_constraintVertical_bias="0.575"
+        app:srcCompat="@drawable/btn_right" />
 
     <ImageButton
         android:id="@+id/downButton"
         style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="@dimen/button_width"
         android:layout_height="@dimen/button_height"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:background="@color/btn_bg_default"
         android:contentDescription="@string/right_button_action"
 
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.898"
-        app:srcCompat="@drawable/ic_keyboard_arrow_down_24dp" />
+        app:layout_constraintVertical_bias="0.809"
+        app:srcCompat="@drawable/btn_bottom" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -103,15 +100,15 @@
         android:text="@string/placeholder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
+        app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.031" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/statusBoard"
-        android:layout_width="246dp"
-        android:layout_height="190dp"
+        android:layout_width="177dp"
+        android:layout_height="95dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="76dp"
@@ -120,17 +117,17 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/leftButton"
-        app:layout_constraintHorizontal_bias="0.658"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toEndOf="@+id/downButton"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.92">
+        app:layout_constraintVertical_bias="0.13">
 
     </android.support.constraint.ConstraintLayout>
 
     <SeekBar
         android:id="@+id/seekBar"
-        android:layout_width="215dp"
-        android:layout_height="27dp"
+        android:layout_width="271dp"
+        android:layout_height="37dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -139,9 +136,9 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/leftButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.829"
+        app:layout_constraintHorizontal_bias="0.183"
         app:layout_constraintStart_toEndOf="@+id/upButton"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.72" />
+        app:layout_constraintVertical_bias="0.563" />
 
 </android.support.constraint.ConstraintLayout>
