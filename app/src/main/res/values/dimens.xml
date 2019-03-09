@@ -1,5 +1,5 @@
 <resources>
     <dimen name="appbar_padding_top">8dp</dimen>
-    <dimen name="button_width">75dp</dimen>
-    <dimen name="button_height">75dp</dimen>
+    <dimen name="button_width">90dp</dimen>
+    <dimen name="button_height">90dp</dimen>
 </resources>

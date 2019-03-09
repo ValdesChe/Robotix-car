@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                switch (v.getId()) {
                     case R.id.upButton:
                         isVertical = true;
+                        imageButton.setImageDrawable(getDrawable(R.drawable.btn_top_hover));
                         if(isHorizontal && isHorizontalVal == 'L'){
                             System.out.println("TOP - LEFT");
                             sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_up_left),
@@ -128,6 +129,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.downButton:
                         isVertical = true;
+
+                        imageButton.setImageDrawable(getDrawable(R.drawable.btn_bottom_hover));
                         if(isHorizontal && isHorizontalVal == 'L'){
                             System.out.println("DOWN - LEFT");
                             sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_down_left),
@@ -150,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.leftButton:
                         isHorizontal = true;
+                        imageButton.setImageDrawable(getDrawable(R.drawable.btn_left_hover));
                         if(isVertical && isVerticalVal == 'T'){
                             System.out.println("TOP - LEFT");
                             sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_up_left),
@@ -172,6 +176,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                         case R.id.rightButton:
                             isHorizontal = true;
+                            imageButton.setImageDrawable(getDrawable(R.drawable.btn_right_hover));
                             if(isVertical && isVerticalVal == 'T'){
                                 System.out.println("TOP - RIGHT");
                                 sendBluetoothData(mPrefs.getString(res.getString(R.string.pref_default_pos_up_right),
@@ -193,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         break;
                }
-               imageButton.setBackgroundColor(getResources().getColor(R.color.btn_bg_pressed));
+               // imageButton.setBackgroundColor(getResources().getColor(R.color.btn_bg_pressed));
                if (mPrefs.getBoolean(getResources().getString(R.string.key_pref_vibrate_switch), true)) {
                     Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                     vibrator.vibrate(50);
@@ -205,18 +210,26 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.upButton:
                         isVertical = false;
                         isVerticalVal = ' ';
+                        imageButton.setImageDrawable(null);
+                        imageButton.setImageDrawable(getDrawable(R.drawable.btn_top));
                         break;
                     case R.id.downButton:
                         isVertical = false;
                         isVerticalVal = ' ';
+                        imageButton.setImageDrawable(null);
+                        imageButton.setImageDrawable(getDrawable(R.drawable.btn_bottom));
                         break;
                     case R.id.leftButton:
                         isHorizontal = false;
                         isHorizontalVal = ' ';
+                        imageButton.setImageDrawable(null);
+                        imageButton.setImageDrawable(getDrawable(R.drawable.btn_left));
                         break;
                     case R.id.rightButton:
                         isHorizontal = false;
                         isHorizontalVal = ' ';
+                        imageButton.setImageDrawable(null);
+                        imageButton.setImageDrawable(getDrawable(R.drawable.btn_right));
                         break;
                 }
                 imageButton.setBackgroundColor(getResources().getColor(R.color.btn_bg_default));
