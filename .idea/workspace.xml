@@ -16,17 +16,8 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ensate/robotixcarrc/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ensate/robotixcarrc/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/bg_work.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_work.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/btn_bottom.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/btn_bottom.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/btn_bottom_hover.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/btn_bottom_hover.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/btn_left.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/btn_left.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/btn_left_hover.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/btn_left_hover.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/btn_right.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/btn_right.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/btn_right_hover.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/btn_right_hover.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/btn_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/btn_top.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/btn_top_hover.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/btn_top_hover.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,15 +61,15 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1076" />
-          <entry key="txt" value="95" />
+          <entry key="java" value="1312" />
+          <entry key="txt" value="106" />
           <entry key="xml" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1076" />
-          <entry key="PLAIN_TEXT" value="95" />
+          <entry key="JAVA" value="1312" />
+          <entry key="PLAIN_TEXT" value="106" />
           <entry key="XML" value="24" />
         </counts>
       </usages-collector>
@@ -89,22 +80,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ensate/robotixcarrc/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="53" column="42" lean-forward="true" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
+            <state relative-caret-position="412">
+              <caret line="454" column="16" lean-forward="true" selection-start-line="454" selection-start-column="16" selection-end-line="454" selection-end-column="16" />
               <folding>
-                <element signature="e#10421#11199#0" />
+                <element signature="e#2552#12492#0" expanded="true" />
+                <element signature="e#5099#5143#0" expanded="true" />
+                <element signature="e#5181#5229#0" expanded="true" />
+                <element signature="e#5544#5588#0" expanded="true" />
+                <element signature="e#5626#5674#0" expanded="true" />
+                <element signature="e#12491#12492#0" expanded="true" />
                 <element signature="e#11206#11483#0" />
                 <element signature="e#11489#12456#0" />
                 <element signature="e#18267#18354#0" />
+                <element signature="e#19373#21768#0" expanded="true" />
+                <element signature="e#21767#21768#0" expanded="true" />
+                <element signature="e#23881#23987#0" expanded="true" />
+                <element signature="e#23986#23987#0" expanded="true" />
+                <element signature="e#25287#25435#0" expanded="true" />
+                <element signature="e#25434#25435#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
           <provider editor-type-id="text-editor">
             <state relative-caret-position="102">
@@ -156,8 +158,8 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ensate/robotixcarrc/BluetoothService.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/ensate/robotixcarrc/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/ensate/robotixcarrc/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -393,19 +395,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ensate/robotixcarrc/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="53" column="42" lean-forward="true" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
-          <folding>
-            <element signature="e#10421#11199#0" />
-            <element signature="e#11206#11483#0" />
-            <element signature="e#11489#12456#0" />
-            <element signature="e#18267#18354#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -413,6 +402,30 @@
         </state>
       </provider>
       <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ensate/robotixcarrc/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="454" column="16" lean-forward="true" selection-start-line="454" selection-start-column="16" selection-end-line="454" selection-end-column="16" />
+          <folding>
+            <element signature="e#2552#12492#0" expanded="true" />
+            <element signature="e#5099#5143#0" expanded="true" />
+            <element signature="e#5181#5229#0" expanded="true" />
+            <element signature="e#5544#5588#0" expanded="true" />
+            <element signature="e#5626#5674#0" expanded="true" />
+            <element signature="e#12491#12492#0" expanded="true" />
+            <element signature="e#11206#11483#0" />
+            <element signature="e#11489#12456#0" />
+            <element signature="e#18267#18354#0" />
+            <element signature="e#19373#21768#0" expanded="true" />
+            <element signature="e#21767#21768#0" expanded="true" />
+            <element signature="e#23881#23987#0" expanded="true" />
+            <element signature="e#23986#23987#0" expanded="true" />
+            <element signature="e#25287#25435#0" expanded="true" />
+            <element signature="e#25434#25435#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

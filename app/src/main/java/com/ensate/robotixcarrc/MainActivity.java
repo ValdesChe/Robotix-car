@@ -1,5 +1,6 @@
 package com.ensate.robotixcarrc;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
@@ -78,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton mMoveLeftButton;
     private ImageButton mMoveUpButton;
     private ImageButton mMoveDownButton;
+    private ImageButton mControlSingleServoMotorButton;
+    private ImageButton mControlBothServoMotorButton;
 
     private View mDecorView;
 
@@ -92,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
     private char isHorizontalVal = ' ';
 
 
+    private boolean isTwoServoMotorOn = false;
+    private boolean isSingleServoMotorOn = false;
+
+
 
     private View.OnTouchListener mControlsButtonOnTouchListener = new View.OnTouchListener() {
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -102,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
             if ( mBluetoothService != null &&  event.getAction() == MotionEvent.ACTION_DOWN) {
                 ConstraintLayout constraintLayout = findViewById(R.id.statusBoard);
                 // System.out.println(isHorizontalVal + " | " + isVerticalVal);
-               switch (v.getId()) {
+                switch (v.getId()) {
                     case R.id.upButton:
                         isVertical = true;
                         imageButton.setImageDrawable(getDrawable(R.drawable.btn_top_hover));
@@ -125,6 +132,45 @@ public class MainActivity extends AppCompatActivity {
                             sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_up),
                                     res.getString(R.string.pref_default_pos_up)));
                             constraintLayout.setBackgroundColor(Color.rgb(5,2,0));
+                        }
+                        break;
+
+                        // Command 1 Servo-motor
+                    case R.id.btn1s:
+                        if(isSingleServoMotorOn){
+                            System.out.println("SINGLE SERVO WAS ON");
+                            imageButton.setImageDrawable(getDrawable(R.drawable.btn_1servo_off));
+                            sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_up_left),
+                                    res.getString(R.string.pref_default_pos_up_left)));
+                            isSingleServoMotorOn = false;
+
+                        }
+
+                        else{
+                            System.out.println("SINGLE SERVO WAS OFF");
+                            imageButton.setImageDrawable(getDrawable(R.drawable.btn_1servo_on));
+                            sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_up_left),
+                                    res.getString(R.string.pref_default_pos_up_left)));
+                            isSingleServoMotorOn = true;
+                        }
+                        break;
+                        // Command 1 Servo-motor
+                    case R.id.btn2s:
+                        if(isTwoServoMotorOn){
+                            System.out.println("BOTH SERVO WAS ON");
+                            imageButton.setImageDrawable(getDrawable(R.drawable.btn_2servo_off));
+                            // sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_up_left),
+                            //        res.getString(R.string.pref_default_pos_up_left)));
+                            isTwoServoMotorOn = false;
+
+                        }
+
+                        else{
+                            System.out.println("SINGLE SERVO WAS OFF");
+                            imageButton.setImageDrawable(getDrawable(R.drawable.btn_2servo_on));
+                            //sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_up_left),
+                             //       res.getString(R.string.pref_default_pos_up_left)));
+                            isTwoServoMotorOn = true;
                         }
                         break;
                     case R.id.downButton:
@@ -383,17 +429,22 @@ public class MainActivity extends AppCompatActivity {
     /**
      * setup Control pad View
      */
+    @SuppressLint("ClickableViewAccessibility")
     private void setupControlPadView() {
 
         mMoveUpButton = findViewById(R.id.upButton);
         mMoveDownButton = findViewById(R.id.downButton);
         mMoveLeftButton = findViewById(R.id.leftButton);
         mMoveRightButton = findViewById(R.id.rightButton);
+        mControlSingleServoMotorButton = findViewById(R.id.btn1s);
+        mControlBothServoMotorButton= findViewById(R.id.btn2s);
 
         mMoveUpButton.setOnTouchListener(mControlsButtonOnTouchListener);
         mMoveDownButton.setOnTouchListener(mControlsButtonOnTouchListener);
         mMoveLeftButton.setOnTouchListener(mControlsButtonOnTouchListener);
         mMoveRightButton.setOnTouchListener(mControlsButtonOnTouchListener);
+        mControlSingleServoMotorButton.setOnTouchListener(mControlsButtonOnTouchListener);
+        mControlBothServoMotorButton.setOnTouchListener(mControlsButtonOnTouchListener);
     }
 
     private void openConnectActivity() {

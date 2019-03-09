@@ -101,4 +101,6 @@
     <string name="commands_titles_string">(\tCommands\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n</string>
     <string name="commands_col_sep_string">\n&#8658;\n&#8658;\n&#8658;\n&#8658;\n&#8658;\n&#8658;\n&#8658;\n&#8658;\n</string>
     <string name="command_char_data_string">\tCharacters\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\t\t)\n</string>
+    <string name="deux_servo">Commade deux servo-moteurs</string>
+    <string name="un_servo">Commande un servo-moteur</string>
 </resources>
