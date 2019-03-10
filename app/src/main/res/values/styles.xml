@@ -17,4 +17,10 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="CustomSeekBar" parent="android:Widget.SeekBar">
+        <item name="android:progressDrawable">@drawable/custom_seekbar</item>
+        <item name="android:thumb">@drawable/custom_seekbar_thumb</item>
+        <item name="android:thumbOffset">0dip</item>
+    </style>
+
 </resources>

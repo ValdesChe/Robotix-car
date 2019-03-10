@@ -5,9 +5,15 @@
     <color name="colorPrimaryDark">#007277</color>
     <color name="primaryTextColor">#000000</color>
     <color name="colorAccent">#007277</color>
-    <color name="btn_bg_default">#00030F10</color>
-    <color name="btn_bg_pressed">#1976D2</color>
     <color name="backgroundPrimary">#0CA1A6</color>
     <color name="backgroundSecondary">#0CA1A6</color>
     <color name="blue">#18618A</color>
+
+    <color name="btn_bg_default">#00030F10</color>
+    <color name="btn_bg_pressed">#1976D2</color>
+
+
+    <color name="seekbar_thumb">#2880BA</color>
+    <color name="seekbar_progress">#FAB81A</color>
+    <color name="seekbar_bg">#3C3939</color>
 </resources>
