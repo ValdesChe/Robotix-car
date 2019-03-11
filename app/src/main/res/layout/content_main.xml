@@ -130,9 +130,9 @@
     </android.support.constraint.ConstraintLayout>
 
     <SeekBar
-        android:id="@+id/seekBar"
+        android:id="@+id/speedSeekBar"
         style="@style/CustomSeekBar"
-        android:layout_width="238dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -140,6 +140,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
+        android:max="10"
         app:layout_constraintBottom_toTopOf="@+id/leftButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.125"

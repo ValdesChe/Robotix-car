@@ -13,7 +13,7 @@
     <color name="btn_bg_pressed">#1976D2</color>
 
 
-    <color name="seekbar_thumb">#2880BA</color>
-    <color name="seekbar_progress">#FAB81A</color>
+    <color name="seekbar_thumb">#DFDFE6</color>
+    <color name="seekbar_progress">#0000FF</color>
     <color name="seekbar_bg">#3C3939</color>
 </resources>

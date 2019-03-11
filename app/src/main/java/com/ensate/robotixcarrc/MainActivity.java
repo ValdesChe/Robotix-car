@@ -26,6 +26,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CONNECT_DEVICE = 1;
     private static final int REQUEST_ENABLE_BT = 2;
     private static final int UPDATE_SETTING = 3;
-
 
 
     /**
@@ -82,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton mControlSingleServoMotorButton;
     private ImageButton mControlBothServoMotorButton;
 
+    private SeekBar mSpeedSeekBar;
+
     private View mDecorView;
 
     private SharedPreferences mPrefs;
@@ -99,54 +101,50 @@ public class MainActivity extends AppCompatActivity {
     private boolean isSingleServoMotorOn = false;
 
 
-
     private View.OnTouchListener mControlsButtonOnTouchListener = new View.OnTouchListener() {
+
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             ImageButton imageButton = (ImageButton) v;
             Resources res = getResources();
-            if ( mBluetoothService != null &&  event.getAction() == MotionEvent.ACTION_DOWN) {
+            if (mBluetoothService != null && event.getAction() == MotionEvent.ACTION_DOWN) {
                 ConstraintLayout constraintLayout = findViewById(R.id.statusBoard);
                 // System.out.println(isHorizontalVal + " | " + isVerticalVal);
                 switch (v.getId()) {
                     case R.id.upButton:
                         isVertical = true;
                         imageButton.setImageDrawable(getDrawable(R.drawable.btn_top_hover));
-                        if(isHorizontal && isHorizontalVal == 'L'){
+                        if (isHorizontal && isHorizontalVal == 'L') {
                             System.out.println("TOP - LEFT");
                             sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_up_left),
-                                                     res.getString(R.string.pref_default_pos_up_left)));
-                            constraintLayout.setBackgroundColor(Color.rgb(55,32,5));
-                        }
-                        else if(isHorizontal && isHorizontalVal == 'R'){
+                                    res.getString(R.string.pref_default_pos_up_left)));
+                            constraintLayout.setBackgroundColor(Color.rgb(55, 32, 5));
+                        } else if (isHorizontal && isHorizontalVal == 'R') {
                             System.out.println("TOP - RIGHT");
-                            constraintLayout.setBackgroundColor(Color.rgb(155,132,45));
+                            constraintLayout.setBackgroundColor(Color.rgb(155, 132, 45));
                             sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_up_right),
                                     res.getString(R.string.pref_default_pos_up_right)));
-                            constraintLayout.setBackgroundColor(Color.rgb(55,32,5));
-                        }
-                        else{
+                            constraintLayout.setBackgroundColor(Color.rgb(55, 32, 5));
+                        } else {
                             System.out.println("TOP");
                             isVerticalVal = 'T';
                             sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_up),
                                     res.getString(R.string.pref_default_pos_up)));
-                            constraintLayout.setBackgroundColor(Color.rgb(5,2,0));
+                            constraintLayout.setBackgroundColor(Color.rgb(5, 2, 0));
                         }
                         break;
 
-                        // Command 1 Servo-motor
+                    // Command 1 Servo-motor
                     case R.id.btn1s:
-                        if(isSingleServoMotorOn){
+                        if (isSingleServoMotorOn) {
                             System.out.println("SINGLE SERVO WAS ON");
                             imageButton.setImageDrawable(getDrawable(R.drawable.btn_1servo_off));
                             sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_up_left),
                                     res.getString(R.string.pref_default_pos_up_left)));
                             isSingleServoMotorOn = false;
 
-                        }
-
-                        else{
+                        } else {
                             System.out.println("SINGLE SERVO WAS OFF");
                             imageButton.setImageDrawable(getDrawable(R.drawable.btn_1servo_on));
                             sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_up_left),
@@ -154,22 +152,20 @@ public class MainActivity extends AppCompatActivity {
                             isSingleServoMotorOn = true;
                         }
                         break;
-                        // Command 1 Servo-motor
+                    // Command 1 Servo-motor
                     case R.id.btn2s:
-                        if(isTwoServoMotorOn){
+                        if (isTwoServoMotorOn) {
                             System.out.println("BOTH SERVO WAS ON");
                             imageButton.setImageDrawable(getDrawable(R.drawable.btn_2servo_off));
                             // sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_up_left),
                             //        res.getString(R.string.pref_default_pos_up_left)));
                             isTwoServoMotorOn = false;
 
-                        }
-
-                        else{
+                        } else {
                             System.out.println("SINGLE SERVO WAS OFF");
                             imageButton.setImageDrawable(getDrawable(R.drawable.btn_2servo_on));
                             //sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_up_left),
-                             //       res.getString(R.string.pref_default_pos_up_left)));
+                            //       res.getString(R.string.pref_default_pos_up_left)));
                             isTwoServoMotorOn = true;
                         }
                         break;
@@ -177,81 +173,75 @@ public class MainActivity extends AppCompatActivity {
                         isVertical = true;
 
                         imageButton.setImageDrawable(getDrawable(R.drawable.btn_bottom_hover));
-                        if(isHorizontal && isHorizontalVal == 'L'){
+                        if (isHorizontal && isHorizontalVal == 'L') {
                             System.out.println("DOWN - LEFT");
                             sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_down_left),
                                     res.getString(R.string.pref_default_pos_down_left)));
-                            constraintLayout.setBackgroundColor(Color.rgb(205,3,53));
-                        }
-                        else if(isHorizontal && isHorizontalVal == 'R'){
+                            constraintLayout.setBackgroundColor(Color.rgb(205, 3, 53));
+                        } else if (isHorizontal && isHorizontalVal == 'R') {
                             System.out.println("DOWN - RIGHT");
                             sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_down_right),
                                     res.getString(R.string.pref_default_pos_down_right)));
-                            constraintLayout.setBackgroundColor(Color.rgb(155,132,45));
-                        }
-                        else{
+                            constraintLayout.setBackgroundColor(Color.rgb(155, 132, 45));
+                        } else {
                             System.out.println("DOWN");
                             isVerticalVal = 'D';
                             sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_down),
                                     res.getString(R.string.pref_default_pos_down)));
-                            constraintLayout.setBackgroundColor(Color.rgb(105,52,205));
+                            constraintLayout.setBackgroundColor(Color.rgb(105, 52, 205));
                         }
                         break;
                     case R.id.leftButton:
                         isHorizontal = true;
                         imageButton.setImageDrawable(getDrawable(R.drawable.btn_left_hover));
-                        if(isVertical && isVerticalVal == 'T'){
+                        if (isVertical && isVerticalVal == 'T') {
                             System.out.println("TOP - LEFT");
                             sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_up_left),
                                     res.getString(R.string.pref_default_pos_up_left)));
-                            constraintLayout.setBackgroundColor(Color.rgb(145,3,3));
-                        }
-                        else if(isVertical && isVerticalVal == 'D'){
+                            constraintLayout.setBackgroundColor(Color.rgb(145, 3, 3));
+                        } else if (isVertical && isVerticalVal == 'D') {
                             System.out.println("DOWN - LEFT");
                             sendBluetoothData(mPrefs.getString(res.getString(R.string.pref_default_pos_down_left),
                                     res.getString(R.string.pref_default_pos_down_left)));
-                            constraintLayout.setBackgroundColor(Color.rgb(15,132,245));
-                        }
-                        else{
+                            constraintLayout.setBackgroundColor(Color.rgb(15, 132, 245));
+                        } else {
                             System.out.println("LEFT");
                             sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_up),
                                     res.getString(R.string.pref_default_pos_up)));
                             isHorizontalVal = 'L';
-                            constraintLayout.setBackgroundColor(Color.rgb(105,92,25));
+                            constraintLayout.setBackgroundColor(Color.rgb(105, 92, 25));
                         }
                         break;
-                        case R.id.rightButton:
-                            isHorizontal = true;
-                            imageButton.setImageDrawable(getDrawable(R.drawable.btn_right_hover));
-                            if(isVertical && isVerticalVal == 'T'){
-                                System.out.println("TOP - RIGHT");
-                                sendBluetoothData(mPrefs.getString(res.getString(R.string.pref_default_pos_up_right),
-                                        res.getString(R.string.pref_default_pos_up_right)));
-                                constraintLayout.setBackgroundColor(Color.rgb(15,30,123));
-                            }
-                            else if(isVertical && isVerticalVal == 'D'){
-                                System.out.println("DOWN - RIGHT");
-                                sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_down_right),
-                                        res.getString(R.string.pref_default_pos_down_right)));
-                                constraintLayout.setBackgroundColor(Color.rgb(105,32,5));
-                            }
-                            else{
-                                System.out.println("RIGHT");
-                                isHorizontalVal = 'R';
-                                sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_right),
-                                        res.getString(R.string.pref_default_pos_right)));
-                                constraintLayout.setBackgroundColor(Color.rgb(205,9,125));
-                            }
+                    case R.id.rightButton:
+                        isHorizontal = true;
+                        imageButton.setImageDrawable(getDrawable(R.drawable.btn_right_hover));
+                        if (isVertical && isVerticalVal == 'T') {
+                            System.out.println("TOP - RIGHT");
+                            sendBluetoothData(mPrefs.getString(res.getString(R.string.pref_default_pos_up_right),
+                                    res.getString(R.string.pref_default_pos_up_right)));
+                            constraintLayout.setBackgroundColor(Color.rgb(15, 30, 123));
+                        } else if (isVertical && isVerticalVal == 'D') {
+                            System.out.println("DOWN - RIGHT");
+                            sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_down_right),
+                                    res.getString(R.string.pref_default_pos_down_right)));
+                            constraintLayout.setBackgroundColor(Color.rgb(105, 32, 5));
+                        } else {
+                            System.out.println("RIGHT");
+                            isHorizontalVal = 'R';
+                            sendBluetoothData(mPrefs.getString(res.getString(R.string.key_pref_pos_right),
+                                    res.getString(R.string.pref_default_pos_right)));
+                            constraintLayout.setBackgroundColor(Color.rgb(205, 9, 125));
+                        }
                         break;
-               }
-               // imageButton.setBackgroundColor(getResources().getColor(R.color.btn_bg_pressed));
-               if (mPrefs.getBoolean(getResources().getString(R.string.key_pref_vibrate_switch), true)) {
+                }
+                // imageButton.setBackgroundColor(getResources().getColor(R.color.btn_bg_pressed));
+                if (mPrefs.getBoolean(getResources().getString(R.string.key_pref_vibrate_switch), true)) {
                     Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                     vibrator.vibrate(50);
-               }
+                }
                 // sendBluetoothData(button);
                 return true;
-            } else if ( mBluetoothService != null && event.getAction() == MotionEvent.ACTION_UP) {
+            } else if (mBluetoothService != null && event.getAction() == MotionEvent.ACTION_UP) {
                 switch (v.getId()) {
                     case R.id.upButton:
                         isVertical = false;
@@ -282,6 +272,28 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
             return false;
+        }
+    };
+
+    SeekBar.OnSeekBarChangeListener mSpeedSeekBarListener = new SeekBar.OnSeekBarChangeListener() {
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            if (mBluetoothService == null ||
+                    mBluetoothService.getState() != BluetoothService.STATE_CONNECTED) {
+                mSpeedSeekBar.setProgress(0);
+                return;
+            }
+            sendBluetoothData(Integer.toString(progress));
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+
         }
     };
 
@@ -436,15 +448,23 @@ public class MainActivity extends AppCompatActivity {
         mMoveDownButton = findViewById(R.id.downButton);
         mMoveLeftButton = findViewById(R.id.leftButton);
         mMoveRightButton = findViewById(R.id.rightButton);
+
         mControlSingleServoMotorButton = findViewById(R.id.btn1s);
-        mControlBothServoMotorButton= findViewById(R.id.btn2s);
+        mControlBothServoMotorButton = findViewById(R.id.btn2s);
+
+        mSpeedSeekBar = findViewById(R.id.speedSeekBar);
 
         mMoveUpButton.setOnTouchListener(mControlsButtonOnTouchListener);
         mMoveDownButton.setOnTouchListener(mControlsButtonOnTouchListener);
         mMoveLeftButton.setOnTouchListener(mControlsButtonOnTouchListener);
         mMoveRightButton.setOnTouchListener(mControlsButtonOnTouchListener);
+
         mControlSingleServoMotorButton.setOnTouchListener(mControlsButtonOnTouchListener);
         mControlBothServoMotorButton.setOnTouchListener(mControlsButtonOnTouchListener);
+
+        mSpeedSeekBar.setOnSeekBarChangeListener(mSpeedSeekBarListener);
+
+
     }
 
     private void openConnectActivity() {
@@ -503,11 +523,10 @@ public class MainActivity extends AppCompatActivity {
         mBluetoothService.connect(device);
 
 
-
         //update the icon when connected
         mConnectScanMenuItem.setIcon(R.drawable.ic_bluetooth_connected_green_24dp);
         TextView textView = findViewById(R.id.textView);
-        textView.setText("DEVICE : "+ device.getAddress()+"/"+address+"\n MAC : "+ device.getAddress()+" \n STATE "+ mBluetoothService.getState());
+        textView.setText("DEVICE : " + device.getAddress() + "/" + address + "\n MAC : " + device.getAddress() + " \n STATE " + mBluetoothService.getState());
 
     }
 
